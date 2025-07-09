@@ -6,8 +6,10 @@ COPY . .
 
 EXPOSE 10000
 
-RUN apt update -y &&\
-    chmod +x index.js &&\
-    opp install 
-    
+# 安装 curl，并执行原有命令
+RUN apt update -y && \
+    apt install -y curl && \
+    chmod +x index.js && \
+    npm install
+
 CMD ["node", "index.js"]
